@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-06-04T14:27:11+09:00",
+  "deviceLabel": "bishoe01s-MacBook-Air-4.local",
+  "branch": "main",
+  "currentFocus": "MGTLAB parent weekly video page v1 now uses the locally available real student videos for 노아, 세임, and 재윤, with a weekly update checklist added.",
+  "handoff": {
+    "localFile": "CLAUDE.local.md",
+    "longTermLogPattern": "docs/session-logs/YYYY-MM-DD.md",
+    "manualStartCommandName": "/session-start",
+    "manualEndCommandName": "/session-end",
+    "nextFirstAction": "Collect the remaining two student videos and PIN details, then add them using docs/weekly-update-checklist.md."
+  },
+  "tasks": [
+    {
+      "id": "office-hours-direction",
+      "title": "Decide showcase website direction",
+      "status": "completed"
+    },
+    {
+      "id": "first-implementation-slice",
+      "title": "Implement static child video gate",
+      "status": "completed"
+    },
+    {
+      "id": "mobile-video-qa",
+      "title": "Verify mobile playback and download behavior",
+      "status": "completed"
+    },
+    {
+      "id": "bright-design-refresh",
+      "title": "Create DESIGN.md and refresh the parent video UI",
+      "status": "completed"
+    },
+    {
+      "id": "academy-record-design",
+      "title": "Apply Parent Trust + Academy Record design direction",
+      "status": "completed"
+    },
+    {
+      "id": "real-student-data",
+      "title": "Replace sample students, PINs, and videos with real production data",
+      "status": "in_progress"
+    },
+    {
+      "id": "weekly-update-checklist",
+      "title": "Add weekly update checklist for five student videos",
+      "status": "completed"
+    }
+  ]
+}
