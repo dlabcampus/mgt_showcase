@@ -24,3 +24,14 @@ test("parent video UI uses a neutral parent-trust palette", () => {
   assert.match(source, /프로젝트 기록/);
   assert.match(source, /보호자 기록/);
 });
+
+test("home screen names the class context before student selection", () => {
+  const home = readFileSync("app/page.tsx", "utf8");
+
+  assert.match(home, /프로젝트 소개 영상/);
+  assert.match(home, /MGTLAB 4쿼터/);
+  assert.match(home, /여름학기 토요일반/);
+  assert.match(home, /MGT-LAB 수업/);
+  assert.match(home, /16:00-18:00/);
+  assert.match(home, /학생 선택/);
+});
