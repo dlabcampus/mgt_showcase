@@ -18,6 +18,7 @@ test("student video records expose random links, pins, and existing mp4 paths", 
     assert.match(student.pin, /^\d{4,6}$/);
     assert.ok(student.weeks.length >= 1);
     assert.equal(student.weeks.filter((week) => week.isLatest).length, 1);
+    assert.equal(getLatestWeek(student)?.label, "1주차");
 
     for (const week of student.weeks) {
       assert.match(week.videoPath, /^\/videos\/[a-z0-9-]+\/[a-z0-9-]+\.mp4$/);
@@ -34,6 +35,6 @@ test("student lookup, latest week, and pin checks are stable per slug", () => {
   assert.equal(student?.displayName, "노아");
   assert.equal(verifyStudentPin(student, " 6184 "), true);
   assert.equal(verifyStudentPin(student, "6185"), false);
-  assert.equal(getLatestWeek(student)?.id, "2026-spring-w10");
+  assert.equal(getLatestWeek(student)?.id, "2026-summer-w1");
   assert.equal(buildAuthStorageKey(student.slug), "mgtlab-video-auth:a8n4-river");
 });

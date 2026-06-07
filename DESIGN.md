@@ -32,7 +32,7 @@ Parent Trust + Academy Record
 - Mobile-first single column.
 - PIN screen: centered white panel on a soft neutral background.
 - Video screen: compact MGTLAB header, academy-record kicker, week buttons, then the video card.
-- Home screen: show the class context first, then the internal student list. Use `프로젝트 소개 영상` as the home title, with `MGTLAB 4쿼터`, `여름학기 토요일반`, and `MGT-LAB 수업 · 16:00-18:00` as compact metadata. Never show raw slugs.
+- Home screen: show the class context first, then a compact `수업 주차` track, then the internal student list. Use `프로젝트 소개 영상` as the home title, with `MGTLAB 4쿼터`, `여름학기 토요일반`, and `MGT-LAB 수업 · 16:00-18:00` as compact metadata. The week track should show the current week as `2 / 11` and make the 1-11 week structure visible before student selection. Never show raw slugs.
 
 ## Components
 - Student cards: white background, hairline border, no helper sentence.

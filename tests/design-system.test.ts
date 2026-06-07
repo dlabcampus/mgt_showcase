@@ -35,3 +35,17 @@ test("home screen names the class context before student selection", () => {
   assert.match(home, /16:00-18:00/);
   assert.match(home, /학생 선택/);
 });
+
+test("home screen shows the class week track before student selection", () => {
+  const home = readFileSync("app/page.tsx", "utf8");
+  const weekIndex = home.indexOf("수업 주차");
+  const studentIndex = home.indexOf("학생 선택");
+
+  assert.notEqual(weekIndex, -1);
+  assert.notEqual(studentIndex, -1);
+  assert.ok(weekIndex < studentIndex);
+  assert.match(home, /const currentWeek = 2/);
+  assert.match(home, /const totalWeeks = 11/);
+  assert.match(home, /classWeeks\.map/);
+  assert.match(home, /isCurrentWeek && "bg-\[#ff385c\] text-white"/);
+});
