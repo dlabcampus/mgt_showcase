@@ -33,17 +33,17 @@ test("student lookup, latest week, and pin checks are stable per slug", () => {
   const student = getStudentBySlug("a8n4-river");
 
   assert.equal(student?.displayName, "노아");
-  assert.equal(verifyStudentPin(student, " 2140 "), true);
-  assert.equal(verifyStudentPin(student, "2141"), false);
+  assert.equal(verifyStudentPin(student, " 1234 "), true);
+  assert.equal(verifyStudentPin(student, "1235"), false);
   assert.equal(getLatestWeek(student)?.id, "2026-summer-w2");
   assert.equal(buildAuthStorageKey(student.slug), "mgtlab-video-auth:a8n4-river");
 });
 
 test("student pins match the assigned parent access codes", () => {
   const assignedPins = new Map([
-    ["노아", "2140"],
-    ["세임", "2406"],
-    ["재윤", "5042"],
+    ["노아", "1234"],
+    ["세임", "2345"],
+    ["재윤", "3456"],
   ]);
 
   for (const [displayName, pin] of assignedPins) {

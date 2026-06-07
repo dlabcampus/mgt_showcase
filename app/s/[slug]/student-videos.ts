@@ -22,7 +22,7 @@ export const students = [
     slug: "a8n4-river",
     displayName: "노아",
     cohortLabel: "MGTLAB 4쿼터 여름학기 토요일반",
-    pin: "2140",
+    pin: "1234",
     weeks: [
       {
         id: "2026-summer-w1",
@@ -49,7 +49,7 @@ export const students = [
     slug: "q5t9-paper",
     displayName: "세임",
     cohortLabel: "MGTLAB 4쿼터 여름학기 토요일반",
-    pin: "2406",
+    pin: "2345",
     weeks: [
       {
         id: "2026-summer-w1",
@@ -76,7 +76,7 @@ export const students = [
     slug: "r3c7-stone",
     displayName: "재윤",
     cohortLabel: "MGTLAB 4쿼터 여름학기 토요일반",
-    pin: "5042",
+    pin: "3456",
     weeks: [
       {
         id: "2026-summer-w1",
