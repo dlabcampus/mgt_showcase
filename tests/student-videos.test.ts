@@ -53,3 +53,20 @@ test("student pins match the assigned parent access codes", () => {
     assert.equal(verifyStudentPin(student, pin), true);
   }
 });
+
+test("weekly project titles and summaries match the actual class projects", () => {
+  for (const student of students) {
+    const [weekOne, weekTwo] = student.weeks;
+
+    assert.equal(weekOne.title, "펫 분류 프로젝트 소개 영상");
+    assert.equal(
+      weekOne.summary,
+      "스위치 센서를 활용해 강아지와 고양이를 구분하는 펫 분류 프로젝트를 진행했습니다.",
+    );
+    assert.equal(weekTwo.title, "스마트 무드등 프로젝트 소개 영상");
+    assert.equal(
+      weekTwo.summary,
+      "조도 센서, 스위치 센서, LED 조명을 연결하고 기상청 날씨 데이터를 활용해 현재 밝기에 따라 조명이 켜지는 스마트 무드등을 만들었습니다.",
+    );
+  }
+});
