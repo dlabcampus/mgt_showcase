@@ -44,7 +44,7 @@ test("home screen shows the class week track before student selection", () => {
   assert.notEqual(weekIndex, -1);
   assert.notEqual(studentIndex, -1);
   assert.ok(weekIndex < studentIndex);
-  assert.match(home, /const currentWeek = 2/);
+  assert.match(home, /const currentWeek = 3/);
   assert.match(home, /const totalWeeks = 11/);
   assert.match(home, /classWeeks\.map/);
   assert.match(home, /isCurrentWeek && "bg-\[#ff385c\] text-white"/);

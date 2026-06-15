@@ -16,9 +16,9 @@ test("student video records expose random links, pins, and existing mp4 paths", 
   for (const student of students) {
     assert.match(student.slug, /^[a-z0-9-]+$/);
     assert.match(student.pin, /^\d{4,6}$/);
-    assert.equal(student.weeks.length, 2);
+    assert.equal(student.weeks.length, 3);
     assert.equal(student.weeks.filter((week) => week.isLatest).length, 1);
-    assert.equal(getLatestWeek(student)?.label, "2주차");
+    assert.equal(getLatestWeek(student)?.label, "3주차");
 
     for (const week of student.weeks) {
       assert.match(week.videoPath, /^\/videos\/[a-z0-9-]+\/[a-z0-9-]+\.mp4$/);
@@ -35,7 +35,7 @@ test("student lookup, latest week, and pin checks are stable per slug", () => {
   assert.equal(student?.displayName, "노아");
   assert.equal(verifyStudentPin(student, " 1234 "), true);
   assert.equal(verifyStudentPin(student, "1235"), false);
-  assert.equal(getLatestWeek(student)?.id, "2026-summer-w2");
+  assert.equal(getLatestWeek(student)?.id, "2026-summer-w3");
   assert.equal(buildAuthStorageKey(student.slug), "mgtlab-video-auth:a8n4-river");
 });
 
@@ -56,7 +56,7 @@ test("student pins match the assigned parent access codes", () => {
 
 test("weekly project titles and summaries match the actual class projects", () => {
   for (const student of students) {
-    const [weekOne, weekTwo] = student.weeks;
+    const [weekOne, weekTwo, weekThree] = student.weeks;
 
     assert.equal(weekOne.title, "펫 분류 프로젝트 소개 영상");
     assert.equal(
@@ -67,6 +67,11 @@ test("weekly project titles and summaries match the actual class projects", () =
     assert.equal(
       weekTwo.summary,
       "조도 센서, 스위치 센서, LED 조명을 연결하고 기상청 날씨 데이터를 활용해 현재 밝기에 따라 조명이 켜지는 스마트 무드등을 만들었습니다.",
+    );
+    assert.equal(weekThree.title, "월드타임 회전 시계 프로젝트 소개 영상");
+    assert.equal(
+      weekThree.summary,
+      "TIME API로 여러 나라의 현재 시간을 확인하고, 지역 간 시간 차이만큼 회전 모터를 움직여 옛날 시계처럼 시간을 표현하는 프로젝트를 진행했습니다.",
     );
   }
 });
