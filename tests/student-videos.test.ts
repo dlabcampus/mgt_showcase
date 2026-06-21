@@ -16,9 +16,9 @@ test("student video records expose random links, pins, and existing mp4 paths", 
   for (const student of students) {
     assert.match(student.slug, /^[a-z0-9-]+$/);
     assert.match(student.pin, /^\d{4,6}$/);
-    assert.equal(student.weeks.length, 3);
+    assert.ok(student.weeks.length >= 3);
     assert.equal(student.weeks.filter((week) => week.isLatest).length, 1);
-    assert.equal(getLatestWeek(student)?.label, "3주차");
+    assert.equal(getLatestWeek(student)?.id, student.weeks.at(-1)?.id);
 
     for (const week of student.weeks) {
       assert.match(week.videoPath, /^\/videos\/[a-z0-9-]+\/[a-z0-9-]+\.mp4$/);
@@ -35,7 +35,7 @@ test("student lookup, latest week, and pin checks are stable per slug", () => {
   assert.equal(student?.displayName, "노아");
   assert.equal(verifyStudentPin(student, " 1234 "), true);
   assert.equal(verifyStudentPin(student, "1235"), false);
-  assert.equal(getLatestWeek(student)?.id, "2026-summer-w3");
+  assert.equal(getLatestWeek(student)?.id, "2026-summer-w4");
   assert.equal(buildAuthStorageKey(student.slug), "mgtlab-video-auth:a8n4-river");
 });
 
@@ -73,5 +73,14 @@ test("weekly project titles and summaries match the actual class projects", () =
       weekThree.summary,
       "TIME API로 여러 나라의 현재 시간을 확인하고, 지역 간 시간 차이만큼 회전 모터를 움직여 옛날 시계처럼 시간을 표현하는 프로젝트를 진행했습니다.",
     );
+
+    const weekFour = student.weeks.find((week) => week.label === "4주차");
+    if (weekFour) {
+      assert.equal(weekFour.title, "OX 퀴즈 프로젝트 소개 영상");
+      assert.equal(
+        weekFour.summary,
+        "소리 센서와 스위치 센서로 OX 퀴즈 게임을 만들었습니다. 퀴즈 API에서 받아온 문제를 보고 왼쪽 버튼은 O, 오른쪽 버튼은 X로 정답을 맞히고, 박수를 쳐서 소리 센서가 큰 소리를 감지하면 다음 문제로 넘어가도록 만들었습니다.",
+      );
+    }
   }
 });
