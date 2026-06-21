@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { students } from "./s/[slug]/student-videos";
 
-const currentWeek = 3;
+const currentWeek = 4;
 const totalWeeks = 11;
 const classWeeks = Array.from({ length: totalWeeks }, (_, index) => index + 1);
 
@@ -32,7 +32,7 @@ export default function Home() {
           </div>
           <div
             className="grid grid-cols-11 gap-1"
-            aria-label="수업 주차: 3주차 / 총 11주"
+            aria-label={`수업 주차: ${currentWeek}주차 / 총 ${totalWeeks}주`}
           >
             {classWeeks.map((week) => {
               const isPastWeek = week < currentWeek;

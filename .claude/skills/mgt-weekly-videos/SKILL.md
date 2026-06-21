@@ -93,7 +93,15 @@ or the wiring.
 All students that week share the same title/summary (they did the same project) — only the
 video path and download name differ per student.
 
-### 5. Keep the tests in sync
+### 5. Light up the new week on the home page (easy to forget!)
+The home page (`app/page.tsx`) has a `const currentWeek = N` and a row of week pills that
+"light up" — past weeks dark, the current week pink, future weeks grey. If you don't bump
+`currentWeek`, the new week's pill stays grey on the landing page even though the student
+pages have the video. **Set `currentWeek` to the week number you just added.** (The grid's
+aria-label is derived from `currentWeek`, so you don't need to touch it separately.) This is
+the single most-forgotten step — do it every time you add a week.
+
+### 6. Keep the tests in sync
 `tests/student-videos.test.ts` encodes invariants that a new week can break. After adding a
 week, check and fix:
 
@@ -104,10 +112,10 @@ week, check and fix:
 - Add a **content check** for the new week's title/summary, guarded by `.find(label === "N주차")`
   so it only runs for students who have it. This keeps the parent-facing copy under test.
 
-### 6. Update the checklist status (if relevant)
+### 7. Update the checklist status (if relevant)
 If `docs/weekly-update-checklist.md` tracks an import status that's now stale, update it.
 
-### 7. Verify — don't skip this
+### 8. Verify — don't skip this
 Run all of these and confirm they pass before reporting done:
 
 ```bash
@@ -123,12 +131,16 @@ Then a real mobile smoke check, because the build passing doesn't prove the vide
    the download link points at the right file.
 3. For a **skipped** student: confirm their page has **no** new-week tab and their latest
    is unchanged.
+4. Open the home page (`/`) and confirm the new week's pill is now lit (the current-week
+   highlight sits on week N), not greyed out — this catches a forgotten step 5.
 4. `curl -o /dev/null -w "%{http_code} %{size_download}"` each new `/videos/...mp4` to
    confirm it's served at full size.
 
 Report what passed with the actual numbers (tab list, sizes, play state) — not just "looks good".
 
 ## Pitfalls
+- **Bump `currentWeek` in `app/page.tsx`** — the most-forgotten step. Without it the new
+  week's pill stays grey on the home page even though the videos are live.
 - Don't put a student's name or slug in the video path — these links go to parents.
 - Don't forget to remove the old `isLatest` when adding the new latest week; exactly one
   week per student should be latest.
