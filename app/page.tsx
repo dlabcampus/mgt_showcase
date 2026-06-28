@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { students } from "./s/[slug]/student-videos";
 
-const currentWeek = 4;
+const currentWeek = 5;
 const totalWeeks = 11;
 const classWeeks = Array.from({ length: totalWeeks }, (_, index) => index + 1);
 

@@ -35,7 +35,7 @@ test("student lookup, latest week, and pin checks are stable per slug", () => {
   assert.equal(student?.displayName, "노아");
   assert.equal(verifyStudentPin(student, " 1234 "), true);
   assert.equal(verifyStudentPin(student, "1235"), false);
-  assert.equal(getLatestWeek(student)?.id, "2026-summer-w4");
+  assert.equal(getLatestWeek(student)?.id, "2026-summer-w5");
   assert.equal(buildAuthStorageKey(student.slug), "mgtlab-video-auth:a8n4-river");
 });
 
@@ -80,6 +80,15 @@ test("weekly project titles and summaries match the actual class projects", () =
       assert.equal(
         weekFour.summary,
         "소리 센서와 스위치 센서로 OX 퀴즈 게임을 만들었습니다. 퀴즈 API에서 받아온 문제를 보고 왼쪽 버튼은 O, 오른쪽 버튼은 X로 정답을 맞히고, 박수를 쳐서 소리 센서가 큰 소리를 감지하면 다음 문제로 넘어가도록 만들었습니다.",
+      );
+    }
+
+    const weekFive = student.weeks.find((week) => week.label === "5주차");
+    if (weekFive) {
+      assert.equal(weekFive.title, "이름 통계 프로젝트 소개 영상");
+      assert.equal(
+        weekFive.summary,
+        "이름 통계 API를 활용해 입력한 이름으로 평균 나이와 성별을 추측하고, 그 예측 결과에 따라 서보 모터가 다른 각도로 움직이도록 만들었습니다.",
       );
     }
   }
